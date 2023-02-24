@@ -1,3 +1,8 @@
+# Vincentg fork
+
+Small project to add ACS Email support, it is working and can be tested with:
+cargo run --package azure_svc_communicationemail --example send_mail $ACS_ENDPOINT $ACS_KEY
+
 # Azure SDK for Rust
 
 This repository is for the development of the [unofficial](https://github.com/Azure/azure-sdk-for-rust/blob/main/FAQ.md#why-is-it-unofficial) Azure SDK for Rust.
