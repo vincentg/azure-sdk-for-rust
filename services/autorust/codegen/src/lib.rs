@@ -206,23 +206,25 @@ pub fn get_mgmt_readmes() -> Result<Vec<SpecReadme>> {
 
 pub fn get_svc_readmes() -> Result<Vec<SpecReadme>> {
     let mut readmes = get_spec_readmes(get_spec_folders(SPEC_FOLDER)?, "data-plane/readme.md")?;
-    // the storage data-plane specs do not follow the pattern
-    readmes.push(SpecReadme {
-        spec: "blobstorage".to_owned(),
-        readme: io::join(SPEC_FOLDER, "storage/data-plane/Microsoft.BlobStorage/readme.md")?,
-    });
-    readmes.push(SpecReadme {
-        spec: "filestorage".to_owned(),
-        readme: io::join(SPEC_FOLDER, "storage/data-plane/Microsoft.FileStorage/readme.md")?,
-    });
-    readmes.push(SpecReadme {
-        spec: "queuestorage".to_owned(),
-        readme: io::join(SPEC_FOLDER, "storage/data-plane/Microsoft.QueueStorage/readme.md")?,
-    });
-    readmes.push(SpecReadme {
-        spec: "storagedatalake".to_owned(),
-        readme: io::join(SPEC_FOLDER, "storage/data-plane/Microsoft.StorageDataLake/readme.md")?,
-    });
+    // the storage data-plane and communication specs do not follow the pattern
+    const EXCEPTIONS: &[[&'static str;2]] = 
+                      &[ ["blobstorage","storage/data-plane/Microsoft.BlobStorage/readme.md"],
+                         ["filestorage","storage/data-plane/Microsoft.FileStorage/readme.md"],
+                         ["queuestorage","storage/data-plane/Microsoft.QueueStorage/readme.md"],
+                         ["storagedatalake","storage/data-plane/Microsoft.StorageDataLake/readme.md"],
+                         ["communicationidentity","communication/data-plane/Identity/readme.md"],
+     //                    ["communicationchat","communication/data-plane/Chat/readme.md"],
+                         ["communicationemail","communication/data-plane/Email/readme.md"],
+                         ["communicationsms","communication/data-plane/Sms/readme.md"],
+                       ];
+    for item in EXCEPTIONS {
+        readmes.push(SpecReadme {
+        spec: item[0].to_owned(),
+        readme: io::join(SPEC_FOLDER, item[1])?,
+        });
+    }
+
+
     Ok(readmes)
 }
 

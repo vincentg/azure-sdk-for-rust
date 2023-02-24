@@ -13927,9 +13927,9 @@ pub mod workspaces {
         use super::models;
         pub struct Response(azure_core::Response);
         impl Response {
-            pub async fn into_body(self) -> azure_core::Result<serde_json::Value> {
+            pub async fn into_body(self) -> azure_core::Result<models::Workspace> {
                 let bytes = self.0.into_body().collect().await?;
-                let body: serde_json::Value = serde_json::from_slice(&bytes)?;
+                let body: models::Workspace = serde_json::from_slice(&bytes)?;
                 Ok(body)
             }
             pub fn into_raw_response(self) -> azure_core::Response {
@@ -13987,7 +13987,7 @@ pub mod workspaces {
                 })
             }
             #[doc = "Send the request and return the response body."]
-            pub fn into_future(self) -> futures::future::BoxFuture<'static, azure_core::Result<serde_json::Value>> {
+            pub fn into_future(self) -> futures::future::BoxFuture<'static, azure_core::Result<models::Workspace>> {
                 Box::pin(async move { self.send().await?.into_body().await })
             }
         }

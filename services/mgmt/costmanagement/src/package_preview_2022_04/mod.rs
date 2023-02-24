@@ -2025,9 +2025,9 @@ pub mod forecast {
         use super::models;
         pub struct Response(azure_core::Response);
         impl Response {
-            pub async fn into_body(self) -> azure_core::Result<models::QueryResult> {
+            pub async fn into_body(self) -> azure_core::Result<models::ForecastResult> {
                 let bytes = self.0.into_body().collect().await?;
-                let body: models::QueryResult = serde_json::from_slice(&bytes)?;
+                let body: models::ForecastResult = serde_json::from_slice(&bytes)?;
                 Ok(body)
             }
             pub fn into_raw_response(self) -> azure_core::Response {
@@ -2091,7 +2091,7 @@ pub mod forecast {
                 })
             }
             #[doc = "Send the request and return the response body."]
-            pub fn into_future(self) -> futures::future::BoxFuture<'static, azure_core::Result<models::QueryResult>> {
+            pub fn into_future(self) -> futures::future::BoxFuture<'static, azure_core::Result<models::ForecastResult>> {
                 Box::pin(async move { self.send().await?.into_body().await })
             }
         }
@@ -2100,9 +2100,9 @@ pub mod forecast {
         use super::models;
         pub struct Response(azure_core::Response);
         impl Response {
-            pub async fn into_body(self) -> azure_core::Result<models::QueryResult> {
+            pub async fn into_body(self) -> azure_core::Result<models::ForecastResult> {
                 let bytes = self.0.into_body().collect().await?;
-                let body: models::QueryResult = serde_json::from_slice(&bytes)?;
+                let body: models::ForecastResult = serde_json::from_slice(&bytes)?;
                 Ok(body)
             }
             pub fn into_raw_response(self) -> azure_core::Response {
@@ -2168,7 +2168,7 @@ pub mod forecast {
                 })
             }
             #[doc = "Send the request and return the response body."]
-            pub fn into_future(self) -> futures::future::BoxFuture<'static, azure_core::Result<models::QueryResult>> {
+            pub fn into_future(self) -> futures::future::BoxFuture<'static, azure_core::Result<models::ForecastResult>> {
                 Box::pin(async move { self.send().await?.into_body().await })
             }
         }
