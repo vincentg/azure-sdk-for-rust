@@ -22,7 +22,7 @@ log = "0.4"
 url = "2.2"
 hmac = "0.12"
 sha2 = "0.10"
-ring = "0.16"
+ring = "0.17"
 bytes = "1.0"
 
 [dev-dependencies]
